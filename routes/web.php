@@ -10,6 +10,8 @@ use App\Http\Controllers\Back\ProfileController;
 use App\Http\Controllers\Back\SlidersController;
 use App\Http\Controllers\Back\Staffcontroller;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\PagesController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -73,7 +75,17 @@ Route::prefix('/cms')->group(function(){
 
 Route::name('front.')->group(function(){
     Route::get('/', [HomeController::class,'index'])->name('home.index');
+
+    Route::get('/category/{category}', [PagesController::class,'category'])->name('pages.category');
+
+    Route::get('/brand/{brand}', [PagesController::class,'brand'])->name('pages.brand');
+
+    Route::get('/product/{product}', [PagesController::class,'product'])->name('pages.product');
+
+    Route::get('/search',[PagesController::class,'search'])->name('pages.search');
 });
+
+Auth::routes();
 
 
 

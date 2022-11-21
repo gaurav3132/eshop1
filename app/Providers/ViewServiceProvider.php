@@ -31,5 +31,12 @@ class ViewServiceProvider extends ServiceProvider
             $brands=Brand::select(['id', 'name'])->get();
             $view->with(compact('categories','brands'));
         });
+
+        View::composer('layouts.front',function($view){
+            $categories=Category::select(['id', 'name'])->get();
+
+            $view->with(compact('categories'));
+        });
+
     }
 }

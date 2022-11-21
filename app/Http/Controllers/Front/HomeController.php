@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,6 +16,8 @@ class HomeController extends Controller
 
         $latestProducts= Product::where('status','Active')->latest()->limit(4)->get();
 
-        return view('front.home.index',compact('featuredProducts','latestProducts'));
+        $sliders= Slider::where('status','Active')->get();
+
+        return view('front.home.index',compact('featuredProducts','latestProducts','sliders'));
     }
 }

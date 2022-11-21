@@ -9,21 +9,20 @@
             <div class="col-12 px-0">
                 <div id="slider" class="carousel slide w-100" data-bs-ride="carousel">
                     <ol class="carousel-indicators">
-                        <li data-bs-target="#slider" data-bs-slide-to="0" class="active"></li>
-                        <li data-bs-target="#slider" data-bs-slide-to="1"></li>
-                        <li data-bs-target="#slider" data-bs-slide-to="2"></li>
+                        @for($i=0;$i<$sliders->count();$i++)
+                        <li data-bs-target="#slider" data-bs-slide-to="{{$i}}" class="{{$i==0 ? 'active' : ''}}"></li>
+                        @endfor
+
                     </ol>
+
                     <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active">
-                            <img src="{{url('public/images/slider-1.jpg')}}" class="slider-img">
+                        @for($i=0;$i<$sliders->count();$i++)
+                        <div class="carousel-item {{$i==0 ? 'active' : ''}}">
+                            <img src="{{url('public/images/'.$sliders[$i]->filename)}}" class="slider-img">
                         </div>
-                        <div class="carousel-item">
-                            <img src="{{url('public/images/slider-2.jpg')}}" class="slider-img">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{url('public/images/slider-3.jpg')}}" class="slider-img">
-                        </div>
+                        @endfor
                     </div>
+
                     <button class="carousel-control-prev" type="button" data-bs-target="#slider" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
@@ -53,12 +52,12 @@
                                 <div class="col-12 bg-white text-center h-100 product-item">
                                     <div class="row h-100">
                                         <div class="col-12 p-0 mb-3">
-                                            <a href="product.html">
+                                            <a href="{{ route('front.pages.product',$product->id)}}">
                                                 <img src="{{url('public/images/'.$product->thumbnail)}}" class="img-fluid">
                                             </a>
                                         </div>
                                         <div class="col-12 mb-3">
-                                            <a href="product.html" class="product-name">{{$product->name}}</a>
+                                            <a href="{{ route('front.pages.product',$product->id)}}" class="product-name">{{$product->name}}</a>
                                         </div>
                                         <div class="col-12 mb-3">
                                             @if(!empty($product->discounted_price))
@@ -115,12 +114,12 @@
                                     <span class="new">New</span>
                                     <div class="row h-100">
                                         <div class="col-12 p-0 mb-3">
-                                            <a href="product.html">
+                                            <a href="{{ route('front.pages.product',$product->id)}}">
                                                 <img src="{{url('public/images/'.$product->thumbnail)}}" class="img-fluid">
                                             </a>
                                         </div>
                                         <div class="col-12 mb-3">
-                                            <a href="product.html" class="product-name">{{$product->name}}</a>
+                                            <a href="{{ route('front.pages.product',$product->id)}}" class="product-name">{{$product->name}}</a>
                                         </div>
 
                                         <div class="col-12 mb-3">
@@ -174,12 +173,12 @@
                                 <div class="col-12 bg-white text-center h-100 product-item">
                                     <div class="row h-100">
                                         <div class="col-12 p-0 mb-3">
-                                            <a href="product.html">
+                                            <a href="{{ route('front.pages.product',$product->id)}}">
                                                 <img src="images/image-1.jpg" class="img-fluid">
                                             </a>
                                         </div>
                                         <div class="col-12 mb-3">
-                                            <a href="product.html" class="product-name">Sony Alpha DSLR Camera</a>
+                                            <a href="{{ route('front.pages.product',$product->id)}}" class="product-name">Sony Alpha DSLR Camera</a>
                                         </div>
                                         <div class="col-12 mb-3">
                                                     <span class="product-price-old">
@@ -203,12 +202,12 @@
                                 <div class="col-12 bg-white text-center h-100 product-item">
                                     <div class="row h-100">
                                         <div class="col-12 p-0 mb-3">
-                                            <a href="product.html">
+                                            <a href="{{ route('front.pages.product',$product->id)}}">
                                                 <img src="images/image-2.jpg" class="img-fluid">
                                             </a>
                                         </div>
                                         <div class="col-12 mb-3">
-                                            <a href="product.html" class="product-name">Optoma 4K HDR Projector</a>
+                                            <a href="{{ route('front.pages.product',$product->id)}}" class="product-name">Optoma 4K HDR Projector</a>
                                         </div>
                                         <div class="col-12 mb-3">
                                                     <span class="product-price">
@@ -228,12 +227,12 @@
                                 <div class="col-12 bg-white text-center h-100 product-item">
                                     <div class="row h-100">
                                         <div class="col-12 p-0 mb-3">
-                                            <a href="product.html">
+                                            <a href="{{ route('front.pages.product',$product->id)}}">
                                                 <img src="images/image-3.jpg" class="img-fluid">
                                             </a>
                                         </div>
                                         <div class="col-12 mb-3">
-                                            <a href="product.html" class="product-name">HP Envy Specter 360</a>
+                                            <a href="{{ route('front.pages.product',$product->id)}}" class="product-name">HP Envy Specter 360</a>
                                         </div>
                                         <div class="col-12 mb-3">
                                             <div class="product-price-old">
@@ -256,12 +255,12 @@
                                 <div class="col-12 bg-white text-center h-100 product-item">
                                     <div class="row h-100">
                                         <div class="col-12 p-0 mb-3">
-                                            <a href="product.html">
+                                            <a href="{{ route('front.pages.product',$product->id)}}">
                                                 <img src="images/image-4.jpg" class="img-fluid">
                                             </a>
                                         </div>
                                         <div class="col-12 mb-3">
-                                            <a href="product.html" class="product-name">Dell Alienware Area 51</a>
+                                            <a href="{{ route('front.pages.product',$product->id)}}" class="product-name">Dell Alienware Area 51</a>
                                         </div>
                                         <div class="col-12 mb-3">
                                                     <span class="product-price">
